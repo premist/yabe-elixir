@@ -12,7 +12,5 @@ config :logger, level: :warn
 # Configure your database
 config :yabe, Yabe.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  database: "yabe_test",
-  hostname: "local.docker",
+  url: System.get_env("DATABASE_URL") || "postgres://postgres@local.docker/yabe_test",
   pool: Ecto.Adapters.SQL.Sandbox
