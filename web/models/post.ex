@@ -20,5 +20,7 @@ defmodule Yabe.Post do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> validate_length(:title, max: 40)
+    |> validate_length(:content, min: 10)
   end
 end
