@@ -2,8 +2,10 @@ defmodule Yabe.PostControllerTest do
   use Yabe.ConnCase
 
   alias Yabe.Post
+  alias Yabe.Factory
+
   @valid_attrs %{content: "some content", title: "some content"}
-  @invalid_attrs %{}
+  @invalid_attrs %{content: "kthxbai", title: "This is super long title which should make test fail"}
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -15,7 +17,7 @@ defmodule Yabe.PostControllerTest do
   end
 
   test "shows chosen resource", %{conn: conn} do
-    post = Repo.insert! %Post{}
+    post = Factory.create(:post)
     conn = get conn, post_path(conn, :show, post)
     assert json_response(conn, 200)["data"] == %{"id" => post.id,
       "title" => post.title,
@@ -40,20 +42,20 @@ defmodule Yabe.PostControllerTest do
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
-    post = Repo.insert! %Post{}
+    post = Factory.create(:post)
     conn = put conn, post_path(conn, :update, post), post: @valid_attrs
     assert json_response(conn, 200)["data"]["id"]
     assert Repo.get_by(Post, @valid_attrs)
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-    post = Repo.insert! %Post{}
+    post = Factory.create(:post)
     conn = put conn, post_path(conn, :update, post), post: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "deletes chosen resource", %{conn: conn} do
-    post = Repo.insert! %Post{}
+    post = Factory.create(:post)
     conn = delete conn, post_path(conn, :delete, post)
     assert response(conn, 204)
     refute Repo.get(Post, post.id)
