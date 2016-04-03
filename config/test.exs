@@ -13,7 +13,6 @@ config :logger, level: :warn
 config :yabe, Yabe.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
   database: "yabe_test",
-  hostname: "localhost",
+  hostname: "local.docker",
   pool: Ecto.Adapters.SQL.Sandbox
