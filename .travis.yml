@@ -9,11 +9,13 @@ addons:
 
 install:
   - . $HOME/.nvm/nvm.sh
-  - nvm install stable
-  - nvm use stable
+  - nvm install v5.10.0
+  - nvm use v5.10.0
 
 before_script:
   - mix local.hex --force
   - mix deps.get
   - psql -c 'create database travis_ci_test;' -U postgres
   - export DATABASE_URL='postgres://postgres@localhost:5432/travis_ci_test'
+  - npm install --prefix ./frontend
+  - bower install --config.cwd=./frontend
