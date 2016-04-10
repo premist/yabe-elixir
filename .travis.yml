@@ -13,5 +13,7 @@ install:
   - nvm use stable
 
 before_script:
+  - mix local.hex --force
+  - mix deps.get
   - psql -c 'create database travis_ci_test;' -U postgres
   - export DATABASE_URL='postgres://postgres@localhost:5432/travis_ci_test'
