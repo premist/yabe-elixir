@@ -2,9 +2,14 @@
 
 [![Build Status](https://travis-ci.org/premist/yabe-elixir.svg?branch=master)](https://travis-ci.org/premist/yabe-elixir)
 
-Yet another blogging engine built with Elixir and Phoenix Framework. Inspired by Rails 15 minutes weblog [screencast](https://youtu.be/Gzj723LkRJY).
+Yet another blogging engine to try out interesting stuffs. Inspired by Rails 15 minutes weblog [screencast](https://youtu.be/Gzj723LkRJY). Yabe utilizes these technologies (for now):
 
-**WARNING: This is built to try out Elixir language and Phoenix framework, and this shouldn't be used in real life!**
+- [Elixir Language](http://elixir-lang.org/)
+- [Phoenix Framework](http://www.phoenixframework.org/)
+
+**WARNING: This project is meant to be experimental and should not be used in any serious work!**
+
+## Running
 
 To start Yabe:
 
