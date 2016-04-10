@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Polymer Starter Kit">
-  <title>Polymer Starter Kit</title>
+  <title>Yabe</title>
 
   <!-- Place favicon.ico in the `app/` directory -->
 
@@ -82,9 +82,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <span>Home</span>
           </a>
 
-          <a data-route="users" href="{{baseUrl}}users">
-            <iron-icon icon="info"></iron-icon>
-            <span>Users</span>
+          <a data-route="posts" href="{{baseUrl}}posts">
+            <iron-icon icon="view-headline"></iron-icon>
+            <span>Posts</span>
           </a>
 
           <a data-route="contact" href="{{baseUrl}}contact">
@@ -108,12 +108,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <!-- Application name -->
           <div class="middle middle-container">
-            <div class="app-name">Polymer Starter Kit</div>
+            <div class="app-name">{{ title }}</div>
           </div>
 
           <!-- Application sub title -->
           <div class="bottom bottom-container">
-            <div class="bottom-title">The future of the web today</div>
+            <div class="bottom-title">Yet another blogging engine</div>
           </div>
         </paper-toolbar>
 
@@ -160,21 +160,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </paper-material>
             </section>
 
-            <section data-route="users" tabindex="-1">
+            <section data-route="posts" tabindex="-1">
               <paper-material elevation="1">
-                <h1 class="page-title" tabindex="-1">Users</h1>
-                <p>This is the users section</p>
-                <a href$="{{baseUrl}}users/Addy">Addy</a><br>
-                <a href$="{{baseUrl}}users/Rob">Rob</a><br>
-                <a href$="{{baseUrl}}users/Chuck">Chuck</a><br>
-                <a href$="{{baseUrl}}users/Sam">Sam</a>
+                <h1 class="page-title" tabindex="-1">Posts</h1>
+                <p>This is the posts section</p>
+                <yabe-list></yabe-list>
               </paper-material>
             </section>
 
-            <section data-route="user-info" tabindex="-1">
-              <paper-material elevation="-1">
-                <h1 class="page-title" tabindex="-1">User: {{params.name}}</h1>
-                <div>This is {{params.name}}'s section</div>
+            <section data-route="post" tabindex="-1">
+              <paper-material elevation="1">
+                <h1 class="page-title" tabindex="-1">Post</h1>
+                <yabe-post postid$="{{ params.postid }}"></yabe-post>
               </paper-material>
             </section>
 

@@ -1,0 +1,63 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="yabe-post">
+  <template>
+    <iron-ajax
+      id="ajax"
+      url="https://yabe-elixir.herokuapp.com/posts/{{ postid }}"
+      handle-as="json"
+      on-response="postRetrieved"
+      debounce-duration="300"
+    ></iron-ajax>
+
+    <article>
+      <h1><a href="{{ post.link }}">{{ post.title }}</a></h1>
+      <p>{{ post.content }}</p>
+    </article>
+
+    <style>
+    </style>
+  </template>
+
+  <script>
+    class YabePost {
+      beforeRegister() {
+        this.is = "yabe-post";
+        this.properties = {
+          postid: {
+            type: Number
+          }
+        };
+      }
+
+      created() {}
+      ready() {
+        if(this.postid !== undefined) {
+          this.$.ajax.generateRequest();
+        }
+      }
+      attached() {}
+      detached() {}
+      attributeChanged() {
+        this.post = {};
+        this.$.ajax.generateRequest();
+      }
+
+      postRetrieved(request) {
+        this.post = this.refineResponseData(request.detail.response.data);
+      }
+
+      refineResponseData(post) {
+        return {
+          id: post.id,
+          title: post.title,
+          content: post.content,
+          link: `${app.baseUrl}posts/${post.id}`
+        };
+      }
+    }
+
+    Polymer(YabePost);
+  </script>
+</dom-module>

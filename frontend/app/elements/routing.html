@@ -43,27 +43,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     page('/', () => {
       app.route = 'home';
+      app.title = "Home";
       setFocus(app.route);
     });
 
     page(app.baseUrl, () => {
       app.route = 'home';
+      app.title = "Home";
       setFocus(app.route);
     });
 
-    page('/users', () => {
-      app.route = 'users';
+    page("/posts", () => {
+      app.route = "posts";
+      app.title = "Posts";
       setFocus(app.route);
     });
 
-    page('/users/:name', (data) => {
-      app.route = 'user-info';
+    page("/posts/:postid", (data) => {
+      app.route = "post";
+      app.title = "Post";
       app.params = data.params;
       setFocus(app.route);
     });
 
     page('/contact', () => {
       app.route = 'contact';
+      app.title = "Contact";
       setFocus(app.route);
     });
 
