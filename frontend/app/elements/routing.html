@@ -51,6 +51,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       setFocus(app.route);
     });
 
+    page("/posts", () => {
+      app.route = "posts";
+      setFocus(app.route);
+    });
+
+    page("/posts/:id", (data) => {
+      app.route = "post";
+      app.params = data.params;
+      setFocus(app.route);
+    });
+
     page('/users', () => {
       app.route = 'users';
       setFocus(app.route);
