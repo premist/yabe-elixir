@@ -33,6 +33,33 @@
   </template>
 
   <script>
-    /* TODO: Add Polymer element definition */
+    class AwesomeMeme {
+      beforeRegister() {
+        this.is = "awesome-meme";
+        this.properties = {
+          top: {
+            type: String,
+            value: ""
+          },
+          bottom: {
+            type: String,
+            value: ""
+          }
+        };
+      }
+
+      created() {}
+
+      ready() {
+        this.top = this.top.toUpperCase();
+        this.bottom = this.bottom.toUpperCase();
+      }
+
+      attached() {}
+      detached() {}
+      attributeChanged() {}
+    }
+
+    Polymer(AwesomeMeme);
   </script>
 </dom-module>
