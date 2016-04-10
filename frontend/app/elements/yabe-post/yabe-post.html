@@ -31,23 +31,21 @@
         };
       }
 
-      created() { console.log("CREATED"); }
+      created() {}
       ready() {
-        console.log("READY");
         if(this.postid !== undefined) {
           this.$.ajax.generateRequest();
         }
       }
-      attached() { console.log("ATTACHED"); console.log(this.postid); }
-      detached() { console.log("DETACHED");}
+      attached() {}
+      detached() {}
       attributeChanged() {
-        console.log("ATTRIBUTECHANGED");
+        this.post = {};
         this.$.ajax.generateRequest();
       }
 
       postRetrieved(request) {
         this.post = this.refineResponseData(request.detail.response.data);
-        console.log(this.post);
       }
 
       refineResponseData(post) {
