@@ -7,7 +7,7 @@
       id="ajax"
       url="https://yabe-elixir.herokuapp.com/posts"
       handle-as="json"
-      on-response="postRetrieved"
+      on-response="postsRetrieved"
       debounce-duration="300"
     ></iron-ajax>
 
@@ -37,7 +37,7 @@
       detached() {}
       attributeChanged() {}
 
-      postRetrieved(request) {
+      postsRetrieved(request) {
         this.items = this.refineResponseData(request.detail.response.data);
       }
 
