@@ -37,39 +37,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     // Routes
-    page('*', scrollToTop, closeDrawer, function(ctx, next) {
+    page('*', scrollToTop, closeDrawer, (ctx, next) => {
       next();
     });
 
-    page('/', function() {
+    page('/', () => {
       app.route = 'home';
       setFocus(app.route);
     });
 
-    page(app.baseUrl, function() {
+    page(app.baseUrl, () => {
       app.route = 'home';
       setFocus(app.route);
     });
 
-    page('/users', function() {
+    page('/users', () => {
       app.route = 'users';
       setFocus(app.route);
     });
 
-    page('/users/:name', function(data) {
+    page('/users/:name', (data) => {
       app.route = 'user-info';
       app.params = data.params;
       setFocus(app.route);
     });
 
-    page('/contact', function() {
+    page('/contact', () => {
       app.route = 'contact';
       setFocus(app.route);
     });
 
     // 404
-    page('*', function() {
-      app.$.toast.text = 'Can\'t find: ' + window.location.href  + '. Redirected you to Home Page';
+    page('*', () => {
+      app.$.toast.text = 'Can\'t find: ' + window.location.href + '. Redirected you to Home Page';
       app.$.toast.show();
       page.redirect(app.baseUrl);
     });

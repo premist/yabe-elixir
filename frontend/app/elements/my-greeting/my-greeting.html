@@ -31,20 +31,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    (function() {
-      'use strict';
-
-      Polymer({
-        is: 'my-greeting',
-
-        properties: {
+    class MyGreeting {
+      beforeRegister() {
+        this.is = "my-greeting";
+        this.properties = {
           greeting: {
             type: String,
-            value: 'Welcome!',
+            value: "Welcome!",
             notify: true
           }
-        }
-      });
-    })();
+        };
+      }
+
+      created() {}
+      ready() {}
+      attached() {}
+      detached() {}
+      attributeChanged() {}
+    }
+
+    Polymer(MyGreeting);
   </script>
 </dom-module>

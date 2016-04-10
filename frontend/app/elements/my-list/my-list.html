@@ -31,30 +31,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    (function() {
-      'use strict';
-
-      Polymer({
-        is: 'my-list',
-
-        properties: {
+    class MyList {
+      beforeRegister() {
+        this.is = "my-list";
+        this.properties = {
           items: {
             type: Array,
             notify: true
           }
-        },
+        };
+      }
 
-        ready: function() {
-          this.items = [
-            'Responsive Web App boilerplate',
-            'Iron Elements and Paper Elements',
-            'End-to-end Build Tooling (including Vulcanize)',
-            'Unit testing with Web Component Tester',
-            'Routing with Page.js',
-            'Offline support with the Platinum Service Worker Elements'
-          ];
-        }
-      });
-    })();
+      created() {}
+
+      ready() {
+        this.items = [
+          "Responsive Web App boilerplate",
+          "Iron Elements and Paper Elements",
+          "End-to-end Build Tooling (including Vulcanize)",
+          "Unit testing with Web Component Tester",
+          "Routing with Page.js",
+          "Offline support with the Platinum Service Worker Elements"
+        ];
+      }
+
+      attached() {}
+      detached() {}
+      attributeChanged() {}
+    }
+
+    Polymer(MyList);
   </script>
 </dom-module>
