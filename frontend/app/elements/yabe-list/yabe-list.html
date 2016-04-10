@@ -35,7 +35,18 @@
       attributeChanged() {}
 
       postRetrieved(request) {
-        this.items = request.detail.response.data;
+        this.items = this.refineResponseData(request.detail.response.data);
+      }
+
+      refineResponseData(responseData) {
+        return responseData.map( (post) => {
+          return {
+            id: post.id,
+            title: post.title,
+            content: post.content,
+            link: `${app.baseUrl}posts/${post.id}`
+          }
+        });
       }
     }
 
