@@ -35,5 +35,7 @@ defmodule Yabe.Endpoint do
     key: "_yabe_key",
     signing_salt: "PPyk3nyO"
 
+  plug Corsica, origins: "*"
+
   plug Yabe.Router
 end
