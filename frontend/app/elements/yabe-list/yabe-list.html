@@ -4,7 +4,7 @@
 <dom-module id="yabe-list">
   <template>
     <iron-ajax
-      auto
+      id="ajax"
       url="https://yabe-elixir.herokuapp.com/posts"
       handle-as="json"
       on-response="postRetrieved"
@@ -29,7 +29,10 @@
       }
 
       created() {}
-      ready() {}
+
+      ready() {
+        this.$.ajax.generateRequest();
+      }
       attached() {}
       detached() {}
       attributeChanged() {}
